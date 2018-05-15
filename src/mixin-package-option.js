@@ -10,8 +10,10 @@ function controller (h, tag, props) {
 function controllerVariation (h, tag, props) {
   return h(tag, {
     props: Object.assign({}, props, {
-      key: props.value || props.label,
-      label: props.value || props.label
+      key: props.value || (Number.isInteger(props.value) || typeof props.value === 'boolean')
+        ? props.value : props.label,
+      label: props.value || (Number.isInteger(props.value) || typeof props.value === 'boolean')
+        ? props.value : props.label
     })
   }, props.label)
 }
