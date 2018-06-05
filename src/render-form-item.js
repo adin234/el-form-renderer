@@ -80,7 +80,8 @@ export default {
           // 手动更新表单数据
           input: (value) => {
             this.$emit('updateValue', { id: data.$id, value })
-          }
+          },
+          ...(data.$attrs || {}).on,
         }
       }, childElements)
     }
