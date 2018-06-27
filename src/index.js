@@ -1,6 +1,11 @@
+import AFHConvert from 'ascii-fullwidth-halfwidth-convert'
+
 import RenderFormItem from './render-form-item'
 import RenderFormGroup from './render-form-group'
+
 import { Form } from 'element-ui'
+
+const converter = new AFHConvert();
 
 export default {
   render (h) {
@@ -70,8 +75,15 @@ export default {
      */
     updateValue ({ id, value }) {
       this.value = Object.assign({}, this.value, {
-        [id]: value
+        [id]: this.convertHalfWidth(value)
       })
+    },
+    convertHalfWidth (str) {
+      if (typeof str === 'string') {
+        return converter.toHalfWidth(str)
+      }
+
+      return str
     },
     // 对外提供获取表单数据的函数
     getFormValue () {

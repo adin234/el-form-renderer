@@ -90,5 +90,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "dependencies": {
+    "ascii-fullwidth-halfwidth-convert": "^0.1.1"
+  }
 }
