@@ -60,11 +60,12 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    }
+    },
   }),
   data () {
     return {
-      value: {} // 表单数据对象
+      value: {}, // 表单数据对象
+      initialValue: null
     }
   },
   methods: {
@@ -77,6 +78,19 @@ export default {
       this.value = Object.assign({}, this.value, {
         [id]: this.convertHalfWidth(value)
       })
+
+      if (this.initialValue !== null) {
+        this.checkifChanged(id)
+      }
+    },
+    checkifChanged(id) {
+      console.log(id, this.initialValue[id], this.value[id]);
+      var stack = new Error().stack;
+      console.error("I'm debugging this code.");
+      this.$emit('hasChanges', this.initialValue[id] !== this.value[id]);
+    },
+    setInitialValue (initValue) {
+      this.initialValue = initValue;
     },
     convertHalfWidth (str) {
       if (typeof str === 'string') {
