@@ -84,9 +84,6 @@ export default {
       }
     },
     checkifChanged(id) {
-      console.log(id, this.initialValue[id], this.value[id]);
-      var stack = new Error().stack;
-      console.error("I'm debugging this code.");
       this.$emit('hasChanges', this.initialValue[id] !== this.value[id]);
     },
     setInitialValue (initValue) {
