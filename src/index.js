@@ -23,6 +23,9 @@ export default {
             this.updateValue({ id: item.$id, value: item.$default })
           }
           const data = {
+            attrs: {
+              id: `el-form--${item.$id}`,
+            },
             props: {
               key: index,
               data: item,
